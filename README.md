@@ -353,10 +353,6 @@ SVG files work in all modern browsers:
 
 This module is part of the Neutron ecosystem. See the main Neutron LICENSE for details.
 
-## Examples Repository
-
-Check out more examples at: [neutron-modules/graphs-examples](https://github.com/neutron-modules/graphs-examples)
-
 ## Support
 
 Found a bug or have a feature request? Open an issue on GitHub!
