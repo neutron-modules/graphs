@@ -10,7 +10,7 @@ This module provides easy-to-use data visualization through SVG-based graphs tha
 
 - 📊 **Multiple Chart Types**: Line charts, bar charts, scatter plots, and pie charts
 - 🎨 **Beautiful Design**: Clean, modern SVG graphics with customizable colors
-- 🚀 **Easy to Use**: Simple API - just pass your data array
+- 🚀 **Easy to Use**: Simple API - pass a CSV string or coordinate-pair string (see Advanced input formats)
 - 🌐 **Browser Integration**: Graphs automatically open in your default browser
 - 📱 **Responsive**: SVG format works on all devices
 - 🎯 **No Dependencies**: Pure C++ implementation, no external libraries needed
@@ -170,15 +170,15 @@ graphs.pie(companies, "Market Share 2024");
 
 Creates a line chart with connected points.
 
-**Parameters:**
-- `data` (Array): Array of `[x, y]` coordinate pairs
+- **Parameters:**
+- `data` (String): Coordinate-pair string like "x:y,x2:y2,..." (or CSV "v1,v2,..." for simple value lists)
 - `title` (String, optional): Chart title (default: "Graph")
 
 **Returns:** Boolean - `true` if successful
 
 **Example:**
 ```neutron
-var temps = [[0, 20], [1, 22], [2, 21], [3, 24]];
+var temps = "0:20,1:22,2:21,3:24";
 graphs.line(temps, "Temperature Trend");
 ```
 
@@ -215,15 +215,15 @@ graphs.pie("5000,3000,2000,1500", "Budget Distribution");
 
 Creates a bar chart for comparing values.
 
-**Parameters:**
-- `data` (Array): Either simple numbers or `[x, y]` pairs
+- **Parameters:**
+- `data` (String): Either a CSV string of values "v1,v2,..." or coordinate-pair string "x1:y1,x2:y2"
 - `title` (String, optional): Chart title (default: "Graph")
 
 **Returns:** Boolean - `true` if successful
 
 **Example:**
 ```neutron
-var sales = [100, 150, 130, 180, 160];
+var sales = "100,150,130,180,160";
 graphs.bar(sales, "Weekly Sales");
 ```
 
@@ -233,15 +233,15 @@ graphs.bar(sales, "Weekly Sales");
 
 Creates a scatter plot showing point distribution.
 
-**Parameters:**
-- `data` (Array): Array of `[x, y]` coordinate pairs
+- **Parameters:**
+- `data` (String): Coordinate-pair string "x:y,x2:y2,..."
 - `title` (String, optional): Chart title (default: "Graph")
 
 **Returns:** Boolean - `true` if successful
 
 **Example:**
 ```neutron
-var points = [[1, 2], [2, 4], [3, 3], [4, 5]];
+var points = "1:2,2:4,3:3,4:5";
 graphs.scatter(points, "Data Points");
 ```
 
@@ -251,15 +251,15 @@ graphs.scatter(points, "Data Points");
 
 Creates a pie chart showing proportions.
 
-**Parameters:**
-- `data` (Array): Array of numbers (will be converted to percentages)
+- **Parameters:**
+- `data` (String): CSV string of numbers ("v1,v2,...") which will be converted to percentages
 - `title` (String, optional): Chart title (default: "Pie Chart")
 
 **Returns:** Boolean - `true` if successful
 
 **Example:**
 ```neutron
-var expenses = [1200, 800, 500, 300];
+var expenses = "1200,800,500,300";
 graphs.pie(expenses, "Monthly Expenses");
 ```
 
@@ -304,11 +304,17 @@ SVG files work in all modern browsers:
 
 ## Tips & Best Practices
 
-1. **Data Formatting**: Always use arrays for data
-   ```neutron
-   var good = [[1, 2], [3, 4]];  // ✅ Good
-   var bad = "1,2,3,4";           // ❌ Bad
-   ```
+1. **Data Formatting**: Use string inputs (CSV or x:y pairs) for the native functions
+    ```neutron
+    // Coordinate pairs (line / scatter / explicit bar pairs)
+    var pairs = "1:2,3:4";        // ✅ Good
+
+    // CSV values (bar / pie)
+    var values = "1,2,3,4";       // ✅ Good
+
+    // If you build arrays in-script, convert them to the string format before calling the native functions
+    // e.g., build a CSV string or a "x:y" pair string
+    ```
 
 2. **Title**: Keep titles concise and descriptive
    ```neutron
@@ -341,8 +347,8 @@ SVG files work in all modern browsers:
 - Try opening the SVG file manually
 - Verify your default browser is set correctly
 
-**Empty or blank graph?**
-- Check your data format (should be arrays of numbers)
+- **Empty or blank graph?**
+- Check your data format (should be a string: "x:y,x2:y2" for coordinate pairs or "v1,v2,v3" for CSV values)
 - Ensure data has at least 2 points
 - Verify values are valid numbers (not strings)
 
