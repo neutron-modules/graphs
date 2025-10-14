@@ -35,15 +35,8 @@ Perfect for showing trends over time or continuous data:
 ```neutron
 use graphs;
 
-// Data format: array of [x, y] pairs
-var data = [
-    [0, 10],
-    [1, 20],
-    [2, 15],
-    [3, 30],
-    [4, 25],
-    [5, 40]
-];
+// Data format: string of coordinate pairs "x:y,x:y,..."
+var data = "0:10,1:20,2:15,3:30,4:25,5:40";
 
 // Create line chart (opens in browser)
 graphs.line(data, "Sales Over Time");
@@ -56,13 +49,13 @@ Great for comparing values across categories:
 ```neutron
 use graphs;
 
-// Simple array of values (x-axis is automatic)
-var sales = [45, 67, 52, 89, 73, 91, 65];
+// Simple CSV values (x-axis is automatic)
+var sales = "45,67,52,89,73,91,65";
 
 graphs.bar(sales, "Monthly Sales");
 
-// Or with explicit x, y pairs
-var detailed = [[1, 45], [2, 67], [3, 52], [4, 89]];
+// Or with explicit x:y pairs
+var detailed = "1:45,2:67,3:52,4:89";
 graphs.bar(detailed, "Quarterly Results");
 ```
 
@@ -73,14 +66,8 @@ Ideal for showing relationships between two variables:
 ```neutron
 use graphs;
 
-var points = [
-    [1.2, 3.4],
-    [2.3, 5.1],
-    [3.1, 4.8],
-    [4.5, 7.2],
-    [5.2, 6.9],
-    [6.1, 8.5]
-];
+// Coordinate pairs as string
+var points = "1.2:3.4,2.3:5.1,3.1:4.8,4.5:7.2,5.2:6.9,6.1:8.5";
 
 graphs.scatter(points, "Correlation Analysis");
 ```
@@ -91,9 +78,8 @@ Perfect for showing proportions and percentages:
 
 ```neutron
 use graphs;
-
-// Values will be converted to percentages automatically
-var budget = [5000, 3000, 2000, 1500, 1000];
+// Values will be converted to percentages automatically (CSV string)
+var budget = "5000,3000,2000,1500,1000";
 
 graphs.pie(budget, "Budget Distribution");
 ```
@@ -104,16 +90,16 @@ graphs.pie(budget, "Budget Distribution");
 
 ```neutron
 use graphs;
-
-// Simulate temperature readings
-var temps = [];
+// Simulate temperature readings as a compact string of pairs
+var temps = "";
 var i = 0;
 while (i < 24) {
     var temp = 20 + (i % 12) * 1.5;
-    temps = temps + [[i, temp]];
+    temps = temps + (i + ":" + temp) + ",";
     i = i + 1;
 }
 
+// Note: trailing commas are ignored by the parser
 graphs.line(temps, "24-Hour Temperature");
 ```
 
@@ -121,12 +107,11 @@ graphs.line(temps, "24-Hour Temperature");
 
 ```neutron
 use graphs;
-
-// Quarterly sales data
-var q1 = [45000, 52000, 48000];
-var q2 = [55000, 61000, 58000];
-var q3 = [62000, 68000, 65000];
-var q4 = [72000, 78000, 75000];
+// Quarterly sales data (CSV strings)
+var q1 = "45000,52000,48000";
+var q2 = "55000,61000,58000";
+var q3 = "62000,68000,65000";
+var q4 = "72000,78000,75000";
 
 // Show each quarter
 graphs.bar(q1, "Q1 Sales");
@@ -134,11 +119,9 @@ graphs.bar(q2, "Q2 Sales");
 graphs.bar(q3, "Q3 Sales");
 graphs.bar(q4, "Q4 Sales");
 
-// Show total by quarter
-var totals = [
-    sum(q1), sum(q2), sum(q3), sum(q4)
-];
-graphs.bar(totals, "Quarterly Totals");
+// If you need totals, compute them in your script and pass a CSV string
+// var totals = "152000,174000,195000,225000";
+// graphs.bar(totals, "Quarterly Totals");
 ```
 
 ### Example 3: Scientific Data
@@ -147,24 +130,24 @@ graphs.bar(totals, "Quarterly Totals");
 use graphs;
 use math;
 
-// Generate sine wave
-var sine_data = [];
+// Generate sine wave as a string of x:y pairs
+var sine_data = "";
 var x = 0.0;
 while (x < 10.0) {
     var y = math.sin(x);
-    sine_data = sine_data + [[x, y]];
+    sine_data = sine_data + (x + ":" + y) + ",";
     x = x + 0.1;
 }
 
 graphs.line(sine_data, "Sine Wave");
 
-// Generate random scatter
-var random_points = [];
+// Generate random scatter as a string
+var random_points = "";
 var i = 0;
 while (i < 50) {
     var rx = math.random() * 10;
     var ry = math.random() * 10;
-    random_points = random_points + [[rx, ry]];
+    random_points = random_points + (rx + ":" + ry) + ",";
     i = i + 1;
 }
 
@@ -175,9 +158,8 @@ graphs.scatter(random_points, "Random Distribution");
 
 ```neutron
 use graphs;
-
-// Market share percentages
-var companies = [35, 28, 15, 12, 10];
+// Market share percentages (CSV string)
+var companies = "35,28,15,12,10";
 
 graphs.pie(companies, "Market Share 2024");
 ```
