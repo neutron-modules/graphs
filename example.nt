@@ -1,0 +1,28 @@
+// Simple Graphs Example
+// Quick demonstration of the graphs module
+
+use graphs;
+
+say("Creating visualizations...");
+
+// 1. Simple line chart - temperature over 24 hours
+// Format: "hour:temp,hour:temp,..."
+var temps = "0:18,2:17,4:16,6:17,8:19,10:22,12:25,14:27,16:26,18:23,20:21,22:19";
+graphs.line(temps, "24-Hour Temperature");
+
+// 2. Bar chart - weekly sales
+// Format: "value,value,value,..."
+var sales = "1200,1500,1350,1800,1600,2100,1950";
+graphs.bar(sales, "Weekly Sales");
+
+// 3. Scatter plot - age vs income (sample data)
+// Format: "x:y,x:y,x:y,..."
+var income_data = "25:35000,28:42000,32:51000,35:58000,40:65000,45:72000,50:78000,55:75000";
+graphs.scatter(income_data, "Age vs Income");
+
+// 4. Pie chart - market share
+// Format: "value,value,value,..."
+var market_share = "35,28,15,12,10";
+graphs.pie(market_share, "Market Share 2024");
+
+say("✓ All graphs created! Check your browser.");

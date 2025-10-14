@@ -1,0 +1,62 @@
+// Graphs Module Test
+// This file demonstrates all features of the graphs module
+
+use graphs;
+
+say("=== Graphs Module Test Suite ===");
+say("");
+
+// Test 1: Line Chart
+say("Test 1: Creating line chart...");
+// Data format: "x1:y1,x2:y2,x3:y3"
+var line_data = "0:10,1:20,2:15,3:30,4:25,5:40,6:35,7:50";
+var success = graphs.line(line_data, "Sales Growth");
+if (success) {
+    say("✓ Line chart created successfully!");
+} else {
+    say("✗ Line chart failed!");
+}
+say("");
+
+// Test 2: Bar Chart
+say("Test 2: Creating bar chart...");
+// Simple comma-separated values
+var bar_data = "45,67,52,89,73,91,65,78";
+success = graphs.bar(bar_data, "Monthly Performance");
+if (success) {
+    say("✓ Bar chart created successfully!");
+} else {
+    say("✗ Bar chart failed!");
+}
+say("");
+
+// Test 3: Scatter Plot
+say("Test 3: Creating scatter plot...");
+// Coordinate pairs
+var scatter_data = "1.2:3.4,2.3:5.1,3.1:4.8,4.5:7.2,5.2:6.9,6.1:8.5,7.3:9.2,8.1:10.5";
+success = graphs.scatter(scatter_data, "Data Distribution");
+if (success) {
+    say("✓ Scatter plot created successfully!");
+} else {
+    say("✗ Scatter plot failed!");
+}
+say("");
+
+// Test 4: Pie Chart
+say("Test 4: Creating pie chart...");
+// Simple values for percentages
+var pie_data = "5000,3000,2000,1500,1000,500";
+success = graphs.pie(pie_data, "Budget Allocation");
+if (success) {
+    say("✓ Pie chart created successfully!");
+} else {
+    say("✗ Pie chart failed!");
+}
+say("");
+
+say("=== All tests completed! ===");
+say("Check the SVG files in the current directory:");
+say("  - graph_line.svg");
+say("  - graph_bar.svg");
+say("  - graph_scatter.svg");
+say("  - graph_pie.svg");
