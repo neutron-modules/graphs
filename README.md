@@ -21,7 +21,7 @@ This module provides easy-to-use data visualization through SVG-based graphs tha
 Build the module using Neutron's Box system:
 
 ```bash
-box build native graphs/
+box build native graphs
 ```
 
 This creates `graphs.so` (or `.dylib`/`.dll` depending on your platform).
@@ -352,10 +352,6 @@ SVG files work in all modern browsers:
 ## License
 
 This module is part of the Neutron ecosystem. See the main Neutron LICENSE for details.
-
-## Examples Repository
-
-Check out more examples at: [neutron-modules/graphs-examples](https://github.com/neutron-modules/graphs-examples)
 
 ## Support
 
