@@ -200,6 +200,33 @@ var temps = [[0, 20], [1, 22], [2, 21], [3, 24]];
 graphs.line(temps, "Temperature Trend");
 ```
 
+Advanced input formats
+----------------------
+
+The native module also accepts compact string formats which are useful when calling the native functions directly or when you prefer a short inline representation. The string formats are parsed as follows:
+
+- Coordinate pairs: "x1:y1,x2:y2,x3:y3" — used by `line`, `scatter`, and when providing explicit x/y pairs to `bar`.
+- CSV values: "v1,v2,v3" — used by `bar` and `pie` when you provide simple numeric lists.
+
+Examples (string inputs):
+
+```neutron
+// Line chart from string pairs
+graphs.line("0:20,1:22,2:21,3:24", "Temperature Trend");
+
+// Bar chart from CSV values
+graphs.bar("100,150,130,180", "Weekly Sales");
+
+// Bar chart from explicit x:y pairs
+graphs.bar("1:45,2:67,3:52,4:89", "Quarterly Results");
+
+// Scatter from string pairs
+graphs.scatter("1.2:3.4,2.3:5.1,3.1:4.8", "Correlation Analysis");
+
+// Pie chart from CSV values
+graphs.pie("5000,3000,2000,1500", "Budget Distribution");
+```
+
 ---
 
 ### `graphs.bar(data, title)`
