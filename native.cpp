@@ -424,7 +424,7 @@ namespace graphs {
 // data format: "x1:y1,x2:y2,x3:y3" (coordinate pairs)
 NeutronValue* graphs_line(NeutronVM* vm, int argCount, NeutronValue** args) {
     if (argCount < 1 || !neutron_is_string(args[0])) {
-        return neutron_new_boolean(vm, false);
+        return neutron_new_boolean(false);
     }
 
     // Get data string
@@ -435,7 +435,7 @@ NeutronValue* graphs_line(NeutronVM* vm, int argCount, NeutronValue** args) {
     // Parse points
     std::vector<graphs::Point> points = graphs::parsePoints(data);
     if (points.empty()) {
-        return neutron_new_boolean(vm, false);
+        return neutron_new_boolean(false);
     }
 
     // Get config
@@ -457,14 +457,14 @@ NeutronValue* graphs_line(NeutronVM* vm, int argCount, NeutronValue** args) {
         graphs::openInBrowser(filename);
     }
 
-    return neutron_new_boolean(vm, success);
+    return neutron_new_boolean(success);
 }
 
 // Native function: graphs.bar(data, title)
 // data format: "10,20,15,30,25" (simple values) or "x1:y1,x2:y2" (pairs)
 NeutronValue* graphs_bar(NeutronVM* vm, int argCount, NeutronValue** args) {
     if (argCount < 1 || !neutron_is_string(args[0])) {
-        return neutron_new_boolean(vm, false);
+        return neutron_new_boolean(false);
     }
 
     // Get data string
@@ -484,7 +484,7 @@ NeutronValue* graphs_bar(NeutronVM* vm, int argCount, NeutronValue** args) {
     }
 
     if (points.empty()) {
-        return neutron_new_boolean(vm, false);
+        return neutron_new_boolean(false);
     }
 
     // Get config
@@ -506,14 +506,14 @@ NeutronValue* graphs_bar(NeutronVM* vm, int argCount, NeutronValue** args) {
         graphs::openInBrowser(filename);
     }
 
-    return neutron_new_boolean(vm, success);
+    return neutron_new_boolean(success);
 }
 
 // Native function: graphs.scatter(data, title)
 // data format: "x1:y1,x2:y2,x3:y3" (coordinate pairs)
 NeutronValue* graphs_scatter(NeutronVM* vm, int argCount, NeutronValue** args) {
     if (argCount < 1 || !neutron_is_string(args[0])) {
-        return neutron_new_boolean(vm, false);
+        return neutron_new_boolean(false);
     }
 
     // Get data string
@@ -524,7 +524,7 @@ NeutronValue* graphs_scatter(NeutronVM* vm, int argCount, NeutronValue** args) {
     // Parse points
     std::vector<graphs::Point> points = graphs::parsePoints(data);
     if (points.empty()) {
-        return neutron_new_boolean(vm, false);
+        return neutron_new_boolean(false);
     }
 
     // Get config
@@ -546,14 +546,14 @@ NeutronValue* graphs_scatter(NeutronVM* vm, int argCount, NeutronValue** args) {
         graphs::openInBrowser(filename);
     }
 
-    return neutron_new_boolean(vm, success);
+    return neutron_new_boolean(success);
 }
 
 // Native function: graphs.pie(data, title)
 // data format: "10,20,15,30,25" (simple values)
 NeutronValue* graphs_pie(NeutronVM* vm, int argCount, NeutronValue** args) {
     if (argCount < 1 || !neutron_is_string(args[0])) {
-        return neutron_new_boolean(vm, false);
+        return neutron_new_boolean(false);
     }
 
     // Get data string
@@ -564,7 +564,7 @@ NeutronValue* graphs_pie(NeutronVM* vm, int argCount, NeutronValue** args) {
     // Parse values
     std::vector<double> values = graphs::parseCSV(data);
     if (values.empty()) {
-        return neutron_new_boolean(vm, false);
+        return neutron_new_boolean(false);
     }
 
     std::vector<std::string> colors = {"#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#6366f1", "#f97316", "#14b8a6", "#8b5cf6"};
@@ -573,7 +573,7 @@ NeutronValue* graphs_pie(NeutronVM* vm, int argCount, NeutronValue** args) {
         total += val;
     }
 
-    if (total == 0) return neutron_new_boolean(vm, false);
+    if (total == 0) return neutron_new_boolean(false);
 
     // Generate SVG with enhanced styling
     std::string svg = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
@@ -662,7 +662,7 @@ NeutronValue* graphs_pie(NeutronVM* vm, int argCount, NeutronValue** args) {
         graphs::openInBrowser(filename);
     }
 
-    return neutron_new_boolean(vm, success);
+    return neutron_new_boolean(success);
 }
 
 // Module initialization function
