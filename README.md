@@ -1,5 +1,5 @@
 >[!WARNING]
->The project has been deprecated because an alternative already exists in Neutron. Please use that instead.
+>The project has been deprecated due to incompatility with the latest version of Neutron.
 
 >[!IMPORTANT]
 > We are going to reshape Neutron's module API in the next version, 26.4.1, so older modules may not work.
