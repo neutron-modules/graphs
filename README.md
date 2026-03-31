@@ -1,3 +1,9 @@
+>[!WARNING]
+>The project has been deprecated because an alternative already exists in Neutron. Please use that instead.
+
+>[!IMPORTANT]
+> We are going to reshape Neutron's module API in the next version, 26.4.1, so older modules may not work.
+
 # Graphs Module for Neutron
 
 A comprehensive module for creating beautiful and interactive graphs in Neutron. This module provides functions to generate line charts, bar charts, scatter plots, and pie charts with customizable styling and advanced features.
